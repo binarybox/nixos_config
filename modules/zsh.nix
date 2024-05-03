@@ -8,14 +8,13 @@
       syntaxHighlighting.enable = true;
       ohMyZsh = {
         enable = true;
-        theme = "robbyrussell";
+        theme = "wedisagree";
         plugins = [
           "git"
           "npm"
           "history"
           "node"
           "rust"
-          "deno"
         ];
       };
     };
