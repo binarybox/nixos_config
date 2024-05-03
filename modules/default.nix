@@ -5,6 +5,8 @@
       ./sway.nix
       ./vscode.nix
       ./zsh.nix
-      ./lemurs.nix
+      ./tuigreet.nix
+      # ./hello-world.nix
+      # ./timer.nix
     ];
 }
