@@ -6,6 +6,7 @@
       ./vscode.nix
       ./zsh.nix
       ./tuigreet.nix
+      ./alacritty.nix
       # ./hello-world.nix
       # ./timer.nix
     ];

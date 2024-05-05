@@ -9,10 +9,7 @@
     [
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      ./modules/sway.nix
-      ./modules/vscode.nix
-      ./modules/zsh.nix
-      ./modules/lemurs.nix
+      ./modules/default.nix
     ];
 
   # Use the GRUB 2 boot loader.
@@ -84,6 +81,7 @@
   environment.systemPackages = with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
+    htop
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -99,6 +97,8 @@
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
   programs.git.enable = true;
+
+  nix.settings.auto-optimise-store = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];

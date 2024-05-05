@@ -8,7 +8,19 @@
     slurp # screenshot functionality
     wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
     mako # notification system developed by swaywm maintainer
-    wmenu
+    fuzzel
+    waybar
+    swaylock-effects
+    workstyle
+    libnotify
+    pulsemixer
+  ];
+
+  fonts.packages = with pkgs; [
+    font-awesome
+    powerline-fonts
+    powerline-symbols
+    (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" ]; })
   ];
 
   # Enable the gnome-keyring secrets vault. 
