@@ -7,6 +7,7 @@
       ./zsh.nix
       ./tuigreet.nix
       ./alacritty.nix
+      ./custom_waybar.nix
       # ./hello-world.nix
       # ./timer.nix
     ];
