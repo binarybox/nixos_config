@@ -3,10 +3,13 @@
 # and in the NixOS manual (accessible by running `nixos-help`).
 
 { config, pkgs, ... }:
-
+let
+  home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/release-23.11.tar.gz";
+in
 {
   imports =
     [
+      (import "${home-manager}/nixos")
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./modules/default.nix
@@ -60,20 +63,40 @@
   sound.enable = true;
   hardware.pulseaudio.enable = true;
 
+  # enable bluetooth
+  hardware.bluetooth.enable = true; # enables support for Bluetooth
+  hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
+
+  virtualisation.docker.enable = true;
+
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.leo = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [
+      "wheel"
+      "docker"
+    ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
-      firefox
+      firefox-wayland
       tree
       thunderbird
       zoom
     ];
     shell = pkgs.zsh;
+  };
+
+  home-manager.users.leo.home = {
+    stateVersion = "23.11";
+    pointerCursor = {
+      gtk.enable = true;
+      x11.enable = true;
+      package = pkgs.bibata-cursors;
+      name = "Bibata-Modern-Classic";
+      size = 16;
+    };
   };
 
   # List packages installed in system profile. To search, run:
@@ -83,6 +106,14 @@
     wget
     htop
   ];
+
+  # suspend to RAM (deep) rather than `s2idle`
+  boot.kernelParams = [ "mem_sleep_default=deep" ];
+  # suspend-then-hibernate
+  systemd.sleep.extraConfig = ''
+    HibernateDelaySec=5m
+    SuspendState=mem
+  '';
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
