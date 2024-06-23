@@ -1,0 +1,252 @@
+// -*- mode: jsonc -*-
+[
+    {
+        "layer": "top",
+        // "layer": "top", // Waybar at top layer
+        // "position": "bottom", // Waybar position (top|bottom|left|right)
+        "height": 30, // Waybar height (to be removed for auto height)
+        // "width": 1280, // Waybar width
+        "spacing": 4, // Gaps between modules (4px)
+        // Choose the order of the modules
+        "name": "top-bar",
+        "modules-left": [
+            "sway/workspaces"
+        ],
+        "modules-center": [
+            "sway/mode"
+        ],
+        "modules-right": [
+            "tray",
+            "cpu",
+            "temperature",
+            // "idle_inhibitor",
+            "network",
+            "bluetooth",
+            "pulseaudio",
+            "pulseaudio#mic",
+            "custom/media",
+            "battery",
+            "clock"
+        ],
+        // Modules configuration
+        "keyboard-state": {
+            "numlock": true,
+            "capslock": true,
+            "format": "{name} {icon}",
+            "format-icons": {
+                "locked": "",
+                "unlocked": ""
+            }
+        },
+        "pulseaudio/slider": {
+            "min": 0,
+            "max": 100,
+            "orientation": "horizontal"
+        },
+        "mpd": {
+            "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ {volume}% ",
+            "format-disconnected": "Disconnected ",
+            "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ",
+            "unknown-tag": "N/A",
+            "interval": 5,
+            "consume-icons": {
+                "on": " "
+            },
+            "random-icons": {
+                "off": "<span color=\"#f53c3c\"></span> ",
+                "on": " "
+            },
+            "repeat-icons": {
+                "on": " "
+            },
+            "single-icons": {
+                "on": "1 "
+            },
+            "state-icons": {
+                "paused": "",
+                "playing": ""
+            },
+            "tooltip-format": "MPD (connected)",
+            "tooltip-format-disconnected": "MPD (disconnected)"
+        },
+        "idle_inhibitor": {
+            "format": "{icon}",
+            "format-icons": {
+                "activated": "",
+                "deactivated": ""
+            }
+        },
+        "tray": {
+            // "icon-size": 21,
+            "spacing": 10
+        },
+        "clock": {
+            // "timezone": "America/New_York",
+            "tooltip-format": "{:%d %B %Y}",
+
+            "format": "{:%H:%M}",
+            "on-click": "exec foot -a 'settings-window' calcure"
+        },
+        "bluetooth": {
+            "format": " {status}",
+            "format-connected": "󰂱",
+            "format-connected-battery": "󰂱",
+            // "format-device-preference": [ "device1", "device2" ], // preference list deciding the displayed device
+            "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+            "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+            "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+            "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
+            "on-click": "exec foot -a 'settings-window' bluetuith"
+        },
+        "battery": {
+            "states": {
+                "100": 100,
+                "90": 90,
+                "80": 80,
+                "70": 70,
+                "60": 60,
+                "50": 50,
+                "40": 40,
+                "30": 30,
+                "20": 20,
+                "10": 10
+            },
+            "interval": 30,
+            "format": "{icon}",
+            "format-charging-10": "󰢜",
+            "format-charging-20": "󰂆",
+            "format-charging-30": "󰂇",
+            "format-charging-40": "󰂈",
+            "format-charging-50": "󰢝",
+            "format-charging-60": "󰂉",
+            "format-charging-70": "󰢞",
+            "format-charging-80": "󰂊",
+            "format-charging-90": "󰂋",
+            "format-charging-100": "󰂅",
+            // "format-plugged": "{capacity}% ",
+            // "format-plugged": "{capacity}% {icon}",
+            "format-alt": "{time} {icon}",
+            "tooltip-format": "{capacity}% \n{time}\n {power} Watts",
+            "tooltip": true,
+            // "format-good": "", // An empty format will hide the module
+            // "format-full": "",
+            "format-icons": {
+                "10": "󰁺",
+                "20": "󰁻",
+                "30":"󰁼",
+                "40":"󰁽",
+                "50":"󰁾",
+                "60":"󰁿",
+                "70":"󰂀",
+                "80":"󰂁",
+                "90":"󰂂",
+                "100":"󰁹"
+            },
+            "on-click": "exec $HOME/.config/rofi/applets/bin/battery.sh"
+        },
+        "power-profiles-daemon": {
+            "format": "{icon}",
+            "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+            "tooltip": true,
+            "format-icons": {
+                "default": "",
+                "performance": "",
+                "balanced": "",
+                "power-saver": ""
+            }
+        },
+        "cpu": {
+            "interval": 10,
+            "format": "",
+            "max-length": 10,
+            "on-click": "exec foot -a 'settings-window' btop"
+        },
+        "temperature": {
+            "format-icons": [
+                "",
+                "",
+                "",
+                ""
+            ],
+            // "thermal-zone": 2,
+            // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+            "critical-threshold": 80,
+            // "format-critical": "{temperatureC}°C ",
+            "format": "{icon}"
+        },
+        "network": {
+            // "interface": "wlp2*", // (Optional) To force the use of this interface
+            // "format-wifi": "{essid} ({signalStrength}%) ",
+            "format-wifi": "",
+            "format-ethernet": "",
+            "format-linked": "",
+            "format-disconnected": "⚠",
+            "tooltip-format-disconnected": "Network disconnected ⚠",
+            "tooltip-format": "{essid} \n{ipaddr}/{cidr}\n{ifname} via {gwaddr}",
+            "tooltip-format-wifi": "{essid}  {signalStrength}%\n{ipaddr}/{cidr}\n{ifname} via {gwaddr}",
+            // "format-alt": "{ifname}: {ipaddr}/{cidr}",
+            "on-click": "exec foot -a 'settings-window' nmtui connect"
+        },
+        "pulseaudio": {
+            "scroll-step": 5, // %, can be a float
+            "format": "{icon}",
+            "tooltip-format": "{desc}\n{volume}% {icon}",
+            "format-bluetooth": "{icon} ",
+            "format-bluetooth-muted": " {icon}",
+            "format-icons": {
+                "headphone": "a",
+                "hands-free": "b",
+                "headset": "󰋎",
+                "phone": "d",
+                "portable": "e",
+                "car": "f",
+                "default": [
+                    "",
+                    "",
+                    ""
+                ]
+            },
+            "on-click": "exec foot -a 'settings-window' alsamixer --view=all"
+        },
+        "pulseaudio#mic": {
+            "format": "{format_source}",
+            "format-source": "",
+            "format-source-muted": "",
+            "format-icons": {
+                "headphone": "a",
+                "hands-free": "b",
+                "headset": "󰋎",
+                "phone": "d",
+                "portable": "e",
+                "car": "f",
+                "default": [
+                    "",
+                    "",
+                    ""
+                ]
+            },
+            "on-click": "exec foot -a 'settings-window' alsamixer --view=all"
+        },
+        "custom/media": {
+            // "tooltip-format": "{icon} 󰝚 \ntitle: {title}",
+            // "tooltip-format": "stuff",
+            "format": "󰝚 {icon}",
+            "return-type": "json",
+            "format-icons": {
+                "Playing": "",
+                "Paused": "󰏤",
+                "No players found": ""
+            },
+            "on-click": "playerctl play-pause",
+            "interval": 1,
+            "exec": "exec media_player info" // Script in resources folder
+            // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
+        },
+
+        "sway/workspaces": {
+            "format": "{icon}",
+            "all-outputs": false,
+            "separate-outputs": true
+        }
+    }
+]

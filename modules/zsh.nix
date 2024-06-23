@@ -19,5 +19,8 @@
       };
     };
   };
+  environment.systemPackages = with pkgs; [
+    neofetch
+  ];
   users.defaultUserShell = pkgs.zsh;
 }

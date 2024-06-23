@@ -1,3 +1,4 @@
+{ pkgs, ... }:
 {
   imports =
     [
@@ -6,9 +7,28 @@
       ./vscode.nix
       ./zsh.nix
       ./tuigreet.nix
-      ./alacritty.nix
-      ./custom_waybar.nix
       # ./hello-world.nix
       # ./timer.nix
+      ./fonts.nix
+      ./waybar.nix
     ];
+
+  environment.systemPackages = with pkgs; [
+    numix-cursor-theme
+    wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
+    mako # notification system developed by swaywm maintainer
+    rofi
+    swaylock-effects
+    swayidle
+    sway-contrib.grimshot # screenshot application
+    calcure
+    pcmanfm
+    feh
+    foot
+    wf-recorder # screen recording application6
+    vlc
+    ffmpeg
+    jq
+    slurp
+  ];
 }
