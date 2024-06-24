@@ -16,66 +16,18 @@
             "sway/mode"
         ],
         "modules-right": [
-            "tray",
+            // "tray",
+            // "custom/weather",
             "cpu",
             "temperature",
-            // "idle_inhibitor",
             "network",
             "bluetooth",
             "pulseaudio",
             "pulseaudio#mic",
-            "custom/media",
+            // "custom/media",
             "battery",
             "clock"
         ],
-        // Modules configuration
-        "keyboard-state": {
-            "numlock": true,
-            "capslock": true,
-            "format": "{name} {icon}",
-            "format-icons": {
-                "locked": "",
-                "unlocked": ""
-            }
-        },
-        "pulseaudio/slider": {
-            "min": 0,
-            "max": 100,
-            "orientation": "horizontal"
-        },
-        "mpd": {
-            "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ {volume}% ",
-            "format-disconnected": "Disconnected ",
-            "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ",
-            "unknown-tag": "N/A",
-            "interval": 5,
-            "consume-icons": {
-                "on": " "
-            },
-            "random-icons": {
-                "off": "<span color=\"#f53c3c\"></span> ",
-                "on": " "
-            },
-            "repeat-icons": {
-                "on": " "
-            },
-            "single-icons": {
-                "on": "1 "
-            },
-            "state-icons": {
-                "paused": "",
-                "playing": ""
-            },
-            "tooltip-format": "MPD (connected)",
-            "tooltip-format-disconnected": "MPD (disconnected)"
-        },
-        "idle_inhibitor": {
-            "format": "{icon}",
-            "format-icons": {
-                "activated": "",
-                "deactivated": ""
-            }
-        },
         "tray": {
             // "icon-size": 21,
             "spacing": 10
@@ -88,14 +40,16 @@
             "on-click": "exec foot -a 'settings-window' calcure"
         },
         "bluetooth": {
-            "format": " {status}",
+            "format": "",
+            "format-disabled": "󰂲",
+            "format-off": "󰂲",
             "format-connected": "󰂱",
             "format-connected-battery": "󰂱",
             // "format-device-preference": [ "device1", "device2" ], // preference list deciding the displayed device
-            "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
-            "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
-            "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
-            "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
+            "tooltip-format": "status: {status}\n{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+            "tooltip-format-connected": "status: {status}\n{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+            "tooltip-format-enumerate-connected": "status: {status}\n{device_alias}\t{device_address}",
+            "tooltip-format-enumerate-connected-battery": "status: {status}\n{device_alias}\t{device_address}\t{device_battery_percentage}%",
             "on-click": "exec foot -a 'settings-window' bluetuith"
         },
         "battery": {
@@ -172,7 +126,8 @@
             // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
             "critical-threshold": 80,
             // "format-critical": "{temperatureC}°C ",
-            "format": "{icon}"
+            "format": "{icon}",
+            "on-click": "exec foot -a 'settings-window' btop"
         },
         "network": {
             // "interface": "wlp2*", // (Optional) To force the use of this interface
@@ -228,19 +183,29 @@
             "on-click": "exec foot -a 'settings-window' alsamixer --view=all"
         },
         "custom/media": {
-            // "tooltip-format": "{icon} 󰝚 \ntitle: {title}",
-            // "tooltip-format": "stuff",
             "format": "󰝚 {icon}",
             "return-type": "json",
             "format-icons": {
                 "Playing": "",
                 "Paused": "󰏤",
-                "No players found": ""
+                "No_players": ""
             },
-            "on-click": "playerctl play-pause",
-            "interval": 1,
-            "exec": "exec media_player info" // Script in resources folder
-            // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
+            "interval": "once",
+            "tooltip": true,
+            // "exec": "playerctl metadata --format '{ \"alt\": \"{{status}}\", \"tooltip\": \"󰝚 {{playerName}}\\ntitle: {{markup_escape(title)}}\\nartist: {{markup_escape(artist)}}\"}'",
+            "exec": "media_player",
+            "on-click": "playerctl play-pause; pkill -RTMIN+5 waybar",
+            "on-click-right": "playerctl next; pkill -RTMIN+5 waybar",
+            "on-scroll-up": "playerctl position 10+; pkill -RTMIN+5 waybar",
+            "on-scroll-down": "playerctl position 10-; pkill -RTMIN+5 waybar",
+            "signal": 5
+        },
+        "custom/weather": {
+            "format": "{}°",
+            "tooltip": true,
+            "interval": 3600,
+            "exec": "wttrbar --location frankfurt --date-format %d.%m",
+            "return-type": "json"
         },
 
         "sway/workspaces": {

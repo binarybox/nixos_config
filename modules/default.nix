@@ -11,13 +11,13 @@
       # ./timer.nix
       ./fonts.nix
       ./waybar.nix
+      ./wofi-calc.nix
     ];
 
   environment.systemPackages = with pkgs; [
     numix-cursor-theme
     wl-clipboard # wl-copy and wl-paste for copy/paste from stdin / stdout
     mako # notification system developed by swaywm maintainer
-    rofi
     swaylock-effects
     swayidle
     sway-contrib.grimshot # screenshot application
