@@ -13,7 +13,6 @@
       ./waybar.nix
       ./wofi-calc.nix
       ./webapps.nix
-      ./firefox.nix
     ];
 
   environment.systemPackages = with pkgs; [
