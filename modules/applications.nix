@@ -3,8 +3,8 @@
 let
   fileManager = pkgs.makeDesktopItem {
     name = "file manager";
-    desktopName = "File Manager (broot)";
-    exec = "foot -a \"settings-window\" broot";
+    desktopName = " File Manager";
+    exec = "foot -a \"file-manager\" ${pkgs.broot}/bin/broot";
     type = "Application";
   };
 in

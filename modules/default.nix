@@ -24,7 +24,6 @@
     swayidle
     sway-contrib.grimshot # screenshot application
     calcure
-    pcmanfm
     feh
     foot
     wf-recorder # screen recording application6
