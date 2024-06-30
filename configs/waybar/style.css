@@ -17,6 +17,7 @@ window#waybar {
     transition-property: background-color;
     transition-duration: .5s;
     border-bottom: 1px solid @green;
+    box-shadow: -4px 4px 2px -1px #fff;
     background-color: @gray;
 }
 
@@ -80,6 +81,7 @@ button:hover {
 }
 
 #workspaces button {
+    /* cursor: pointer; */
 }
 
 #workspaces button:hover {
@@ -120,16 +122,13 @@ button:hover {
 
 #mode {
     margin: 0 5px;
-    padding: 0 10px;
+    padding: 0 8px;
 }
 
 .modules-right label, .modules-left label {
-    padding: 0 10px;
+    padding: 0 8px;
 }
 
-#pulseaudio:hover {
-    background-color: @blue;
-}
 .modules-right label:last-child {
     border-right: none;
 }

@@ -4,7 +4,7 @@
         "layer": "top",
         // "layer": "top", // Waybar at top layer
         // "position": "bottom", // Waybar position (top|bottom|left|right)
-        "height": 30, // Waybar height (to be removed for auto height)
+        "height": 25, // Waybar height (to be removed for auto height)
         // "width": 1280, // Waybar width
         "spacing": 4, // Gaps between modules (4px)
         // Choose the order of the modules
@@ -17,7 +17,7 @@
         ],
         "modules-right": [
             // "tray",
-            // "custom/weather",
+            "custom/weather",
             "cpu",
             "temperature",
             "network",
@@ -79,7 +79,7 @@
             "format-charging-100": "󰂅",
             // "format-plugged": "{capacity}% ",
             // "format-plugged": "{capacity}% {icon}",
-            "format-alt": "{time} {icon}",
+            "format-alt": "{icon}",
             "tooltip-format": "{capacity}% \n{time}\n {power} Watts",
             "tooltip": true,
             // "format-good": "", // An empty format will hide the module
@@ -95,8 +95,8 @@
                 "80":"󰂁",
                 "90":"󰂂",
                 "100":"󰁹"
-            },
-            "on-click": "exec $HOME/.config/rofi/applets/bin/battery.sh"
+            }
+            // "on-click": "exec $HOME/.config/rofi/applets/bin/battery.sh"
         },
         "power-profiles-daemon": {
             "format": "{icon}",
@@ -156,9 +156,9 @@
                 "portable": "e",
                 "car": "f",
                 "default": [
-                    "",
-                    "",
-                    ""
+                    "󰕿",
+                    "󰖀",
+                    "󰕾"
                 ]
             },
             "on-click": "exec foot -a 'settings-window' alsamixer --view=all"
@@ -175,9 +175,9 @@
                 "portable": "e",
                 "car": "f",
                 "default": [
-                    "",
-                    "",
-                    ""
+                    "󰕿",
+                    "󰖀",
+                    "󰕾"
                 ]
             },
             "on-click": "exec foot -a 'settings-window' alsamixer --view=all"

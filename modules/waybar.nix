@@ -14,7 +14,7 @@ let
     # pkill pactl;
     # pactl subscribe | grep --line-buffered "sink-input" | while read -r UNUSED_LINE; do pkill -RTMIN+5 waybar; done & 
 
-    exec waybar -c /etc/nixos/modules/waybar/config.jsonc -s /etc/nixos/modules/waybar/style.css;
+    exec waybar -c /etc/nixos/configs/waybar/config.jsonc -s /etc/nixos/configs/waybar/style.css;
 
   '';
 in
@@ -36,5 +36,7 @@ in
       wofi
     ];
 
-  programs.waybar.enable = true;
+  programs.waybar = {
+    enable = true;
+  };
 }
