@@ -13,6 +13,7 @@
       ./waybar.nix
       ./wofi-calc.nix
       ./webapps.nix
+      ./applications.nix
     ];
 
   environment.systemPackages = with pkgs; [
@@ -31,6 +32,5 @@
     ffmpeg
     jq
     slurp
-    typora
   ];
 }
