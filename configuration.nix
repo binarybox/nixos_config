@@ -104,8 +104,10 @@ in
   environment.systemPackages = with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
-    btop
+    bottom
   ];
+
+  environment.variables.EDITOR = "vim";
 
   # suspend to RAM (deep) rather than `s2idle`
   boot.kernelParams = [ "mem_sleep_default=deep" ];
