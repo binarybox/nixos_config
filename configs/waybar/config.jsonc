@@ -35,7 +35,6 @@
         "clock": {
             // "timezone": "America/New_York",
             "tooltip-format": "{:%d %B %Y}",
-
             "format": "{:%H:%M}",
             "on-click": "exec foot -a 'settings-window' calcure"
         },
@@ -67,18 +66,7 @@
             },
             "interval": 30,
             "format": "{icon}",
-            "format-charging-10": "󰢜",
-            "format-charging-20": "󰂆",
-            "format-charging-30": "󰂇",
-            "format-charging-40": "󰂈",
-            "format-charging-50": "󰢝",
-            "format-charging-60": "󰂉",
-            "format-charging-70": "󰢞",
-            "format-charging-80": "󰂊",
-            "format-charging-90": "󰂋",
-            "format-charging-100": "󰂅",
-            // "format-plugged": "{capacity}% ",
-            // "format-plugged": "{capacity}% {icon}",
+            // "format-charging-100": "󰂅",
             "format-alt": "{icon}",
             "tooltip-format": "{capacity}% \n{time}\n {power} Watts",
             "tooltip": true,
@@ -87,16 +75,26 @@
             "format-icons": {
                 "10": "󰁺",
                 "20": "󰁻",
-                "30":"󰁼",
-                "40":"󰁽",
-                "50":"󰁾",
-                "60":"󰁿",
-                "70":"󰂀",
-                "80":"󰂁",
-                "90":"󰂂",
-                "100":"󰁹"
+                "30": "󰁼",
+                "40": "󰁽",
+                "50": "󰁾",
+                "60": "󰁿",
+                "70": "󰂀",
+                "80": "󰂁",
+                "90": "󰂂",
+                "100": "󰁹",
+                "charging-10": "󰢜",
+                "charging-20": "󰂆",
+                "charging-30": "󰂇",
+                "charging-40": "󰂈",
+                "charging-50": "󰢝",
+                "charging-60": "󰂉",
+                "charging-70": "󰢞",
+                "charging-80": "󰂊",
+                "charging-90": "󰂋",
+                "charging-100": "󰂅",
+                "plugged": ""
             }
-            // "on-click": "exec $HOME/.config/rofi/applets/bin/battery.sh"
         },
         "power-profiles-daemon": {
             "format": "{icon}",
@@ -113,7 +111,7 @@
             "interval": 10,
             "format": "",
             "max-length": 10,
-            "on-click": "exec foot -a 'settings-window' btop"
+            "on-click": "exec foot -a 'settings-window' btm"
         },
         "temperature": {
             "format-icons": [
@@ -207,7 +205,6 @@
             "exec": "wttrbar --location frankfurt --date-format %d.%m",
             "return-type": "json"
         },
-
         "sway/workspaces": {
             "format": "{icon}",
             "all-outputs": false,
