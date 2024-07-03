@@ -35,11 +35,18 @@ let
       fi
     done
   '';
+  calculator_deskop_item = pkgs.makeDesktopItem {
+    name = "calculator";
+    desktopName = "󰃬 calculator";
+    exec = "wofi_calc";
+    type="Application";
+  };
 in
 {
   environment.systemPackages =
     with pkgs; [
       wofi_calc
+      calculator_deskop_item
       libqalculate
     ];
 }

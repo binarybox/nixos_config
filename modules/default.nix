@@ -11,7 +11,7 @@
       # ./timer.nix
       ./fonts.nix
       ./waybar.nix
-      ./wofi-calc.nix
+      ./wofi_calc.nix
       ./webapps.nix
       ./applications.nix
       # ./battop.nix
