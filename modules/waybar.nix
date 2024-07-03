@@ -22,10 +22,6 @@ let
   propagatedBuildInputs = [
     (pkgs.python3.withPackages (pythonPackages: with pythonPackages; [
       requests
-      tabulate
-      # consul
-      # six
-      # requests2
     ]))
   ];
   dontUnpack = true;
@@ -37,18 +33,19 @@ in
     with pkgs; [
       media_player
       custom_waybar
+      weather_script
       workstyle # icons for workspace applications
       libnotify # notifier
-      alsa-utils # audio mixer tui
+      dunst # notify 
       bluetuith # bluetooth tui
       playerctl
+      pulsemixer
+      alsa-utils  # audio mixer tui
       brightnessctl
-      dunst
       acpi
       ponymix
       wttrbar
       wofi
-      weather_script
     ];
 
   programs.waybar = {
