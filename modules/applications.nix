@@ -1,10 +1,10 @@
 { pkgs, ... }:
 
 let
-  fileManager = pkgs.makeDesktopItem {
+  file_manager = pkgs.makeDesktopItem {
     name = "file manager";
     desktopName = " File Manager";
-    exec = "${pkgs.kitty}/bin/kitty --app-id \"file-manager\" ${pkgs.broot}/bin/broot";
+    exec = "${pkgs.kitty}/bin/kitty -c /etc/nixos/configs/kitty/theme.conf --app-id \"file-manager\" ${pkgs.broot}/bin/broot";
     type = "Application";
   };
 in
@@ -14,7 +14,7 @@ in
     typora
     csvlens
     broot
-    fileManager
+    file_manager
     kitty
   ];
 }
