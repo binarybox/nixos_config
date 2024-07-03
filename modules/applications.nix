@@ -4,7 +4,7 @@ let
   fileManager = pkgs.makeDesktopItem {
     name = "file manager";
     desktopName = " File Manager";
-    exec = "foot -a \"file-manager\" ${pkgs.broot}/bin/broot";
+    exec = "${pkgs.kitty}/bin/kitty --app-id \"file-manager\" ${pkgs.broot}/bin/broot";
     type = "Application";
   };
 in
@@ -15,5 +15,6 @@ in
     csvlens
     broot
     fileManager
+    kitty
   ];
 }

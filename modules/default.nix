@@ -14,6 +14,7 @@
       ./wofi-calc.nix
       ./webapps.nix
       ./applications.nix
+      # ./battop.nix
     ];
 
   environment.systemPackages = with pkgs; [
@@ -31,5 +32,7 @@
     ffmpeg
     jq
     slurp
+
+    google-chrome # sometimes tis is required
   ];
 }

@@ -17,6 +17,20 @@ let
     exec waybar -c /etc/nixos/configs/waybar/config.jsonc -s /etc/nixos/configs/waybar/style.css;
 
   '';
+  weather_script = pkgs.stdenv.mkDerivation {
+  name = "weather";
+  propagatedBuildInputs = [
+    (pkgs.python3.withPackages (pythonPackages: with pythonPackages; [
+      requests
+      tabulate
+      # consul
+      # six
+      # requests2
+    ]))
+  ];
+  dontUnpack = true;
+  installPhase = "install -Dm755 ${./scripts/weather.py} $out/bin/weather.py";
+};
 in
 {
   environment.systemPackages =
@@ -34,6 +48,7 @@ in
       ponymix
       wttrbar
       wofi
+      weather_script
     ];
 
   programs.waybar = {

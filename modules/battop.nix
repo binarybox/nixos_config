@@ -1,13 +1,9 @@
-let
-  pkgs = import <nixpkgs> { };
+{ pkgs, ... }:
+let src = pkgs.fetchFromGitHub {
+    owner  = "awakesecurity";
+    repo   = "hocker";
+    rev    = "88150c7b8a0664a70757ffd88b2ac12b84dd0604";
+    sha256 = "1mb3gfg01mj7ajjl1ylw24mnwamcnnifbxkakzal2j6ibqyqw6rq";
+  };
 in
-derivation {
-  name = "hello";
-  builder = "${pkgs.bash}/bin/bash";
-  args = [ cargo install battop ];
-  buildInputs = with pkgs; [
-    cargo 
-    rustup
-  ];
-  system = builtins.currentSystem;
-}
+import "${src}/release.nix"

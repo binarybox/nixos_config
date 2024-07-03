@@ -10,7 +10,8 @@
         // Choose the order of the modules
         "name": "top-bar",
         "modules-left": [
-            "sway/workspaces"
+            "sway/workspaces",
+            "sway/scratchpad"
         ],
         "modules-center": [
             "sway/mode"
@@ -45,10 +46,10 @@
             "format-connected": "󰂱",
             "format-connected-battery": "󰂱",
             // "format-device-preference": [ "device1", "device2" ], // preference list deciding the displayed device
-            "tooltip-format": "status: {status}\n{controller_alias}\t{controller_address}\n\n{num_connections} connected",
-            "tooltip-format-connected": "status: {status}\n{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
-            "tooltip-format-enumerate-connected": "status: {status}\n{device_alias}\t{device_address}",
-            "tooltip-format-enumerate-connected-battery": "status: {status}\n{device_alias}\t{device_address}\t{device_battery_percentage}%",
+            "tooltip-format": "status: {}\n{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+            "tooltip-format-connected": "status: {}\n{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+            "tooltip-format-enumerate-connected": "status: {}\n{device_alias}\t{device_address}",
+            "tooltip-format-enumerate-connected-battery": "status: {}\n{device_alias}\t{device_address}\t{device_battery_percentage}%",
             "on-click": "exec foot -a 'settings-window' bluetuith"
         },
         "battery": {
@@ -199,16 +200,22 @@
             "signal": 5
         },
         "custom/weather": {
-            "format": "{}°",
+            // "format": "{}°",
             "tooltip": true,
             "interval": 3600,
-            "exec": "wttrbar --location frankfurt --date-format %d.%m",
+            "exec": "weather.py frankfurt",
             "return-type": "json"
         },
         "sway/workspaces": {
             "format": "{icon}",
             "all-outputs": false,
             "separate-outputs": true
+        },
+        "sway/scratchpad": {
+            "format": "{icon} {count}",
+            "show-empty": false,
+            "tooltip": true,
+            "tooltip-format": "{app}: {title}"
         }
     }
 ]
