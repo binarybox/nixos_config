@@ -1,0 +1,29 @@
+# based on Base16 Seti UI
+# Author: Appelgriebsch
+
+# some global theme specific variables
+set $background /etc/sway/images/sway_background.png
+set $icon-theme Papirus-Dark
+set $cursor-theme xcursor-breeze
+set $gui-font Noto Sans 11
+
+
+set $blue_color #458588
+set $primary_color #679d69
+set $secondary_color #14161b
+set $mark_color #d89921
+set $color_urgent #cb241d
+set $color_gray #282828
+
+set $test_bright #ffffff
+
+# Basic color configuration using the Base16 variables for windows and borders.
+# Property Name         Border           BG             Text         Indicator        Child Border
+client.focused          $primary_color   $primary_color $test_bright $primary_color   $primary_color
+client.focused_inactive $secondary_color $primary_color $test_bright $secondary_color $secondary_color
+client.unfocused        $secondary_color $color_gray    $test_bright $secondary_color $secondary_color
+client.urgent           $color_urgent    $color_urgent  $test_bright $color_urgent    $color_urgent
+client.placeholder      $color_gray      $color_gray    $test_bright $color_gray      $color_gray
+client.background       $base07
+
+

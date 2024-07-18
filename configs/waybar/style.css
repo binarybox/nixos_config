@@ -164,6 +164,9 @@ button:hover {
 #battery.30:not(.charging) {
     color: @yellow;
 }
+#battery.20:not(.charging) {
+    color: @yellow;
+}
 
 /* Using steps() instead of linear as a timing function to limit cpu usage */
 #battery.10:not(.charging) {

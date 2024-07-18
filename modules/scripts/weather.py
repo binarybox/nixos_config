@@ -159,7 +159,7 @@ location_id = ""  # TODO
 #     priv_env_cmd, shell=True, capture_output=True).stdout.decode('utf8').strip()
 
 # get html page
-url = f"https://wttr.in/${location_id}?format=j1"
+url = f"https://wttr.in/?format=j1"
 data = requests.get(url).json()
 
 current_condition = data['current_condition'][0]

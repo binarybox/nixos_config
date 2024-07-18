@@ -69,7 +69,7 @@
             "format": "{icon}",
             // "format-charging-100": "󰂅",
             "format-alt": "{icon}",
-            "tooltip-format": "{capacity}% \n{time}",
+            "tooltip-format": "{capacity}%\n{time}",
             "tooltip": true,
             // "format-good": "", // An empty format will hide the module
             // "format-full": "",
@@ -110,7 +110,7 @@
         },
         "cpu": {
             "interval": 10,
-            "format": "",
+            "format": "",
             "max-length": 10,
             "on-click": "exec foot -a 'settings-window' btm"
         },
@@ -131,13 +131,13 @@
         "network": {
             // "interface": "wlp2*", // (Optional) To force the use of this interface
             // "format-wifi": "{essid} ({signalStrength}%) ",
-            "format-wifi": "",
+            "format-wifi": "󰖩",
             "format-ethernet": "",
             "format-linked": "",
             "format-disconnected": "⚠",
             "tooltip-format-disconnected": "Network disconnected ⚠",
             "tooltip-format": "{essid} \n{ipaddr}/{cidr}\n{ifname} via {gwaddr}",
-            "tooltip-format-wifi": "{essid}  {signalStrength}%\n{ipaddr}/{cidr}\n{ifname} via {gwaddr}",
+            "tooltip-format-wifi": "{essid} 󰖩 {signalStrength}%\n{ipaddr}/{cidr}\n{ifname} via {gwaddr}",
             // "format-alt": "{ifname}: {ipaddr}/{cidr}",
             "on-click": "exec foot -a 'settings-window' nmtui connect"
         },
@@ -164,8 +164,8 @@
         },
         "pulseaudio#mic": {
             "format": "{format_source}",
-            "format-source": "",
-            "format-source-muted": "",
+            "format-source": "󰍬",
+            "format-source-muted": "󰍭",
             "format-icons": {
                 "headphone": "a",
                 "hands-free": "b",
@@ -203,8 +203,9 @@
             // "format": "{}°",
             "tooltip": true,
             "interval": 3600,
-            "exec": "weather.py frankfurt",
-            "return-type": "json"
+            "exec": "weather.py",
+            "return-type": "json",
+            "on-click": "exec foot -a 'settings-window' -H curl v2.wttr.in"
         },
         "sway/workspaces": {
             "format": "{icon}",
