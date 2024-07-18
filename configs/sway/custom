@@ -29,7 +29,7 @@ set $mod Mod4
 # set $up k
 # set $right l
 # Your preferred terminal emulator
-set $term foot -c /etc/sway/foot.config #alacritty --config-file $HOME/.config/alacritty/alacritty.toml
+set $term foot -c /etc/foot/config #alacritty --config-file $HOME/.config/alacritty/alacritty.toml
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
@@ -131,7 +131,7 @@ for_window [app_id="settings-window"] floating enable
 
 seat * xcursor_theme Bibata-Modern-Classic 16
 
-exec_always mako -c /etc/sway/mako.config
+exec_always mako -c /etc/mako/config
 exec_always makoctl reload
 
 exec_always --no-startup-id workstyle &> /tmp/workstyle.log

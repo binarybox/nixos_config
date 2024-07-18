@@ -57,6 +57,9 @@ in
     "sway/swaylock.config".source = ../configs/sway/swaylock.config;
     "sway/mako.config".source = ../configs/sway/mako.config;
     "sway/foot.config".source = ../configs/sway/foot.config;
+
+    "foot".source = ../configs/foot;
+    "mako".source = ../configs/mako;
   };
 
   # login manager
